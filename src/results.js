@@ -33,7 +33,7 @@ function Results() {
     };
 
     const formatPercentage = (value) => {
-        return (value * 100).toFixed(1) + '%';
+        return Math.round(value * 100) + '%';
     };
 
     const getHighestEmotion = (emotions) => {
@@ -62,30 +62,7 @@ function Results() {
             </header>
 
             <div className="max-w-6xl mx-auto px-6 py-12">
-                {/* Overall Scores Section */}
-                {/* <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
-                    <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-                        <span className="text-4xl">📊</span>
-                        Overall Performance
-                    </h2>
-                    
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div className={`${getScoreBg(coaching_advice.confidence_score)} rounded-lg p-6`}>
-                            <h3 className="text-lg font-semibold text-gray-700 mb-2">Confidence Score</h3>
-                            <p className={`text-4xl font-bold ${getScoreColor(coaching_advice.confidence_score)}`}>
-                                {formatPercentage(coaching_advice.confidence_score)}
-                            </p>
-                        </div>
-
-                        <div className={`${getScoreBg(1 - coaching_advice.anxiety_score)} rounded-lg p-6`}>
-                            <h3 className="text-lg font-semibold text-gray-700 mb-2">Anxiety Score</h3>
-                            <p className={`text-4xl font-bold ${getScoreColor(1 - coaching_advice.anxiety_score)}`}>
-                                {formatPercentage(coaching_advice.anxiety_score)}
-                            </p>
-                            <p className="text-sm text-gray-600 mt-2">Lower is better</p>
-                        </div>
-                    </div>
-                </div> */}
+                
 
                 {/* Facial Analysis Section */}
                 <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
@@ -156,7 +133,7 @@ function Results() {
                         <div className="bg-teal-50 rounded-lg p-4">
                             <h4 className="text-sm font-semibold text-gray-700 mb-2">Mumble Score</h4>
                             <p className="text-2xl font-bold text-teal-600">
-                                {transcript_analysis.mumble_score}
+                                {Math.round(transcript_analysis.mumble_score * 100)}%
                             </p>
                         </div>
                     </div>
