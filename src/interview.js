@@ -166,84 +166,73 @@ function Interview() {
     };
 
     return (
-        <div>
-            <header className="bg-white shadow-sm">
-                <div className="max-w-7xl mx-auto px-6 py-4 flex items-center">
-                    <img src="/icon.webp" alt="Logo" className="h-20 w-20"/>
-                    <h1 className="text-2xl font-bold text-gray-900">Interview Coach</h1>
-                </div>
-            </header>
+        <div className="max-w-6xl mx-auto px-6 my-10">
+            <h1 className="text-4xl font-bold text-gray-900 text-center mb-12">
+                Interview Practice Session
+            </h1>
             
-            <section className='bg-gradient-to-br from-orange-50 to-orange-100 min-h-screen py-20'>
-                <div className="max-w-4xl mx-auto px-6">
-                    <h1 className="text-4xl font-bold text-gray-900 text-center mb-12">
-                        Interview Practice Session
-                    </h1>
-                    
-                    <div className="bg-white rounded-lg shadow-lg p-8">
-                        <div className="mb-6">
-                            <video 
-                                ref={videoRef}
-                                autoPlay 
-                                muted 
-                                playsInline
-                                className="w-full max-w-2xl mx-auto rounded-lg shadow-md bg-black"
-                                style={{ width: '640px', height: '480px' }}
-                            />
-                        </div>
-
-                        <div className="flex gap-4 justify-center mb-6">
-                            <button
-                                onClick={startRecording}
-                                disabled={isRecording}
-                                className={`px-6 py-3 rounded-lg font-semibold transition-all ${
-                                    isRecording 
-                                    ? 'bg-gray-300 text-gray-500 cursor-not-allowed' 
-                                    : 'bg-green-600 hover:bg-green-700 text-white shadow-lg'
-                                }`}
-                            >
-                                Start Recording
-                            </button>
-
-                            <button
-                                onClick={stopRecording}
-                                disabled={!isRecording}
-                                className={`px-6 py-3 rounded-lg font-semibold transition-all ${
-                                    !isRecording 
-                                    ? 'bg-gray-300 text-gray-500 cursor-not-allowed' 
-                                    : 'bg-red-600 hover:bg-red-700 text-white shadow-lg'
-                                }`}
-                            >
-                                Stop & Upload
-                            </button>
-                        </div>
-
-                        <div className="bg-gray-100 rounded-lg p-4 mb-6">
-                            <pre className="text-sm font-mono text-gray-700 whitespace-pre-wrap">
-                                {status}
-                            </pre>
-                        </div>
-                        
-                        <div className="flex gap-4">
-                            <Link 
-                                to="/" 
-                                className="bg-gray-600 hover:bg-gray-700 text-white font-semibold px-6 py-3 rounded-lg inline-block"
-                            >
-                                ← Back to Home
-                            </Link>
-                            
-                            {analysisData && (
-                                <button
-                                    onClick={viewResults}
-                                    className="bg-orange-600 hover:bg-orange-700 text-white font-semibold px-6 py-3 rounded-lg"
-                                >
-                                    View Results →
-                                </button>
-                            )}
-                        </div>
-                    </div>
+            <div className="bg-gradient-to-br from-orange-50 to-orange-100 rounded-lg shadow-lg p-8">
+                <div className="mb-6">
+                    <video 
+                        ref={videoRef}
+                        autoPlay 
+                        muted 
+                        playsInline
+                        className="w-full mx-auto rounded-lg shadow-md bg-gradient-to-r from-slate-900 to-slate-700"
+                        style={{ maxWidth: '100%', height: '600px' }}
+                    />
                 </div>
-            </section>
+
+                <div className="bg-white rounded-lg p-4 mb-6">
+                    <pre className="text-sm font-mono text-gray-700 whitespace-pre-wrap">
+                        {status}
+                    </pre>
+                </div>
+            </div>
+
+            <div className="flex gap-4 justify-center my-8">
+                <button
+                    onClick={startRecording}
+                    disabled={isRecording}
+                    className={`px-6 py-3 rounded-lg font-semibold transition-all ${
+                        isRecording 
+                        ? 'bg-gray-300 text-gray-500 cursor-not-allowed' 
+                        : 'bg-green-600 hover:bg-green-700 text-white shadow-lg'
+                    }`}
+                >
+                    Start Recording
+                </button>
+
+                <button
+                    onClick={stopRecording}
+                    disabled={!isRecording}
+                    className={`px-6 py-3 rounded-lg font-semibold transition-all ${
+                        !isRecording 
+                        ? 'bg-gray-300 text-gray-500 cursor-not-allowed' 
+                        : 'bg-red-600 hover:bg-red-700 text-white shadow-lg'
+                    }`}
+                >
+                    Stop & Upload
+                </button>
+            </div>
+            
+            <div className="flex gap-4 justify-center">
+                <Link 
+                    to="/" 
+                    className="bg-gray-600 hover:bg-gray-700 text-white font-semibold px-6 py-3 rounded-lg inline-block"
+                >
+                    ← Back to Home
+                </Link>
+                
+                {analysisData && (
+                    <button
+                        onClick={viewResults}
+                        className="bg-orange-600 hover:bg-orange-700 text-white font-semibold px-6 py-3 rounded-lg"
+                    >
+                        View Results →
+                    </button>
+                )}
+            </div>
         </div>
     );
 }

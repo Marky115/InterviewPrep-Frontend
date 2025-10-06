@@ -57,56 +57,77 @@ function Results() {
             <header className="bg-white shadow-sm">
                 <div className="max-w-7xl mx-auto px-6 py-4 flex items-center">
                     <img src="/icon.webp" alt="Logo" className="h-20 w-20"/>
-                    <h1 className="text-2xl font-bold text-gray-900">Interview Analysis Results</h1>
+                    <h1 className="text-2xl font-bold text-gray-900">InterviewPrep</h1>
                 </div>
             </header>
 
             <div className="max-w-6xl mx-auto px-6 py-12">
                 
-
+                <h1 className="text-4xl font-bold text-gray-900 text-center mb-12">
+                    Interview Analysis Results
+                </h1>
                 {/* Facial Analysis Section */}
                 <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
+                     
                     <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
                         <span className="text-3xl">📷</span>
                         Facial Analysis
                     </h2>
-                    
+
+                    <div
+                        className={`
+                        rounded-xl p-8 mb-8 text-center text-white transition-all duration-300
+                        ${highestEmotion.emotion === "calm"
+                            ? "bg-blue-300"
+                            : highestEmotion.emotion === "happy"
+                            ? "bg-amber-500"
+                            : highestEmotion.emotion === "angry"
+                            ? "bg-red-500"
+                            : "bg-gray-400"}
+                        `}
+                    >
+                        
+                        <h3 className="text-4xl font-bold capitalize mb-2">
+                        {highestEmotion.emotion}
+                        </h3>
+                        <p className="text-3xl font-semibold">
+                        {Math.round(highestEmotion.value * 10)}%
+                        </p>
+                        <p className="text-m opacity-90 mt-2 font-semibold">Dominant Emotion</p>
+                    </div>
+
+                    {/* Secondary Metrics */}
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
                         <div className="bg-blue-50 rounded-lg p-4">
-                            <h4 className="text-sm font-semibold text-gray-700 mb-2">Engagement</h4>
-                            <p className="text-2xl font-bold text-blue-600">
-                                {formatPercentage(facial_analysis.engagement)}
-                            </p>
+                        <h4 className="text-sm font-semibold text-gray-700 mb-2">Engagement</h4>
+                        <p className="text-2xl font-bold text-blue-600">
+                            {formatPercentage(facial_analysis.engagement)}
+                        </p>
                         </div>
 
                         <div className="bg-green-50 rounded-lg p-4">
-                            <h4 className="text-sm font-semibold text-gray-700 mb-2">Positivity</h4>
-                            <p className="text-2xl font-bold text-green-600">
-                                {formatPercentage(facial_analysis.positivity)}
-                            </p>
+                        <h4 className="text-sm font-semibold text-gray-700 mb-2">Positivity</h4>
+                        <p className="text-2xl font-bold text-green-600">
+                            {formatPercentage(facial_analysis.positivity*10)}
+                        </p>
                         </div>
 
                         <div className="bg-purple-50 rounded-lg p-4">
-                            <h4 className="text-sm font-semibold text-gray-700 mb-2">Anxiety Hint</h4>
-                            <p className="text-2xl font-bold text-purple-600">
-                                {formatPercentage(facial_analysis.anxiety_hint)}
-                            </p>
+                        <h4 className="text-sm font-semibold text-gray-700 mb-2">Anxiety Hint</h4>
+                        <p className="text-2xl font-bold text-purple-600">
+                            {formatPercentage(facial_analysis.anxiety_hint)}
+                        </p>
                         </div>
 
                         <div className="bg-orange-50 rounded-lg p-4">
-                            <h4 className="text-sm font-semibold text-gray-700 mb-2">Confidence</h4>
-                            <p className="text-2xl font-bold text-orange-600">
-                                {formatPercentage(facial_analysis.confidence)}
-                            </p>
+                        <h4 className="text-sm font-semibold text-gray-700 mb-2">Confidence</h4>
+                        <p className="text-2xl font-bold text-orange-600">
+                            {formatPercentage(facial_analysis.confidence *10)}
+                        </p>
                         </div>
                     </div>
-
-                    <h3 className="text-lg font-semibold text-gray-800 mb-4">Dominant Emotion</h3>
-                    <div className="bg-gray-50 rounded-lg p-4">
-                        <span className="text-sm text-gray-600 capitalize">{highestEmotion.emotion}</span>
-                        <p className="text-lg font-semibold text-gray-900">{highestEmotion.value}%</p>
                     </div>
-                </div>
+
 
                 {/* Speech Analysis Section */}
                 <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
@@ -133,14 +154,14 @@ function Results() {
                         <div className="bg-teal-50 rounded-lg p-4">
                             <h4 className="text-sm font-semibold text-gray-700 mb-2">Mumble Score</h4>
                             <p className="text-2xl font-bold text-teal-600">
-                                {Math.round(transcript_analysis.mumble_score * 100)}%
+                                {Math.round(transcript_analysis.mumble_score *100)}%
                             </p>
                         </div>
                     </div>
 
                     {transcript_analysis.full_text && (
                         <div className="bg-gray-50 rounded-lg p-4">
-                            <h4 className="text-sm font-semibold text-gray-700 mb-2">Transcript</h4>
+                            <h4 className="text-sm font-semibold text-gray-700 mb-2 ">Transcript</h4>
                             <p className="text-gray-800 leading-relaxed">{transcript_analysis.full_text}</p>
                         </div>
                     )}
@@ -152,13 +173,13 @@ function Results() {
                         <span className="text-3xl">💬</span>
                         Coaching Advice
                     </h2>
-                    
-                    <div className="bg-orange-50 border-l-4 border-orange-600 rounded-lg p-6 mb-6">
+
+                    <div className="bg-orange-50 border-2 border-orange-600 rounded-lg p-6 mb-6">
                         <h3 className="text-lg font-semibold text-gray-900 mb-2">Key Tip</h3>
                         <p className="text-gray-800 leading-relaxed">{coaching_advice.tip}</p>
                     </div>
 
-                    <h3 className="text-lg font-semibold text-gray-900 mb-4">Recommendations</h3>
+                    <h3 className="text-lg font-semibold text-gray-900 mb-4">Strengths</h3>
                     <div className="space-y-3">
                         {coaching_advice.recommendations.map((rec, index) => (
                             <div key={index} className="flex items-start gap-3 bg-green-50 rounded-lg p-4">

@@ -12,7 +12,7 @@ function App() {
           <header className="bg-white shadow-sm">
             <div className="max-w-7xl mx-auto px-6 py-4 flex items-center">
               <img src="/icon.webp" alt="Logo" className="h-20 w-20"/>
-              <h1 className="text-2xl font-bold text-gray-900">Interview Coach</h1>
+              <h1 className="text-2xl font-bold text-gray-900">InterviewPrep</h1>
             </div>
           </header>
 
